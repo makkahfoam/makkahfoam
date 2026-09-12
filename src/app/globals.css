@@ -1,0 +1,149 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 218 20% 98%;
+    --foreground: 222 47% 11%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+    --primary: 221 39% 22%; /* Deep Navy Slate #1e293b */
+    --primary-foreground: 210 40% 98%;
+    --secondary: 30 50% 94%; /* Warm furniture timber tone */
+    --secondary-foreground: 24 60% 25%;
+    --muted: 210 20% 95%;
+    --muted-foreground: 215 16% 47%;
+    --accent: 28 80% 52%; /* Rich warm amber/brass #d97706 */
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214 25% 88%;
+    --input: 214 25% 86%;
+    --ring: 28 80% 52%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 224 45% 7%;
+    --foreground: 210 40% 98%;
+    --card: 222 47% 11%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222 47% 11%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222 47% 11%;
+    --secondary: 217 32% 17%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217 32% 17%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 28 80% 52%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217 32% 20%;
+    --input: 217 32% 20%;
+    --ring: 28 80% 52%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html, body {
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Custom scrollbars for dense ERP data tables */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* ========================================================
+   PRINT STYLESHEET FOR PROFESSIONAL A4 INVOICES & LEDGERS
+   ======================================================== */
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    font-size: 9.5pt !important;
+    line-height: 1.3 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Hide navigation, sidebar, header, action buttons during print */
+  nav,
+  aside,
+  header,
+  .no-print,
+  button,
+  .print\:hidden {
+    display: none !important;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+
+  .print-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0.2cm 0.3cm !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+
+  table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    font-size: 9pt !important;
+  }
+
+  th, td {
+    border: 1px solid #94a3b8 !important;
+    padding: 3px 5px !important;
+    font-size: 8.5pt !important;
+    line-height: 1.25 !important;
+  }
+
+  th {
+    background-color: #f1f5f9 !important;
+    font-weight: 700 !important;
+    color: #0f172a !important;
+  }
+
+  thead {
+    display: table-header-group !important;
+  }
+
+  tr {
+    page-break-inside: avoid !important;
+  }
+
+  @page {
+    size: A4 portrait;
+    margin: 0.6cm;
+  }
+}
